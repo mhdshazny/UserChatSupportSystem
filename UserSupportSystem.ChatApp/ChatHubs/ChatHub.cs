@@ -5,12 +5,12 @@ namespace UserSupportSystem.ChatApp.ChatHubs
 {
     public class ChatHub : Hub
     {
-        private readonly ChatApiClient _chatApiClient;
+        //private readonly ChatApiClient _chatApiClient;
 
-        public ChatHub(ChatApiClient chatApiClient)
-        {
-            _chatApiClient = chatApiClient;
-        }
+        //public ChatHub(ChatApiClient chatApiClient)
+        //{
+        //    _chatApiClient = chatApiClient;
+        //}
         public static int GetCount()
         {
             return 10;
