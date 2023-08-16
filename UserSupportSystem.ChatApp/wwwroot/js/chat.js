@@ -2,6 +2,8 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
+document.getElementById("sendButton").disabled = true;
+
 
 connection.on("ReceiveMessage", function (user, message) {
     var li = document.createElement("li");
@@ -29,7 +31,7 @@ connection.on("JoinGroup", function (message,groupid) {
 });
 
 connection.start().then(function () {
-    //document.getElementById("sendButton").disabled = false;
+    document.getElementById("sendButton").disabled = false;
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -56,7 +58,7 @@ document.getElementById("join-group").addEventListener("click", async (event) =>
         }
         event.preventDefault();
     }
-    else if ((user != null & user != "")/* && (groupName == null || groupName == '')*/)
+    else if ((user != null & user != "") && (groupName == null || groupName == ''))
     {
         try {
             await connection.invoke("AddToGroup", user, groupName);
